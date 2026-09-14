@@ -1354,6 +1354,102 @@ Bana uygun parfüm önerinizi öğrenmek istiyorum.
 
     renderQuestion();
   </script>
+<!-- ÉVRAUNE AMBIENT MUSIC -->
+<audio id="ambientMusic" loop preload="auto">
+  <source src="fassounds-escape-your-love-upbeat-fashion-pop-dance-412230.mp3" type="audio/mpeg">
+</audio>
 
+<button id="musicToggle" class="music-toggle" aria-label="Müziği aç veya kapat">
+  <span class="music-icon">♫</span>
+  <span id="musicLabel">MUSIC OFF</span>
+</button>
+
+<style>
+  .music-toggle {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(200, 173, 120, 0.55);
+    background: rgba(10, 10, 9, 0.88);
+    backdrop-filter: blur(12px);
+    color: #c8ad78;
+    padding: 12px 16px;
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .music-toggle:hover {
+    background: #c8ad78;
+    color: #0a0a09;
+  }
+
+  .music-icon {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .music-toggle.playing {
+    border-color: #c8ad78;
+    box-shadow: 0 0 18px rgba(200, 173, 120, 0.18);
+  }
+
+  .music-toggle.playing .music-icon {
+    animation: musicPulse 1.2s ease-in-out infinite;
+  }
+
+  @keyframes musicPulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .music-toggle {
+      right: 15px;
+      bottom: 15px;
+      padding: 11px 13px;
+      font-size: 8px;
+    }
+  }
+</style>
+
+<script>
+  const ambientMusic = document.getElementById("ambientMusic");
+  const musicToggle = document.getElementById("musicToggle");
+  const musicLabel = document.getElementById("musicLabel");
+
+  let musicPlaying = false;
+
+  musicToggle.addEventListener("click", async function () {
+    if (musicPlaying) {
+      ambientMusic.pause();
+      musicPlaying = false;
+
+      musicLabel.textContent = "MUSIC OFF";
+      musicToggle.classList.remove("playing");
+    } else {
+      try {
+        await ambientMusic.play();
+
+        musicPlaying = true;
+        musicLabel.textContent = "MUSIC ON";
+        musicToggle.classList.add("playing");
+      } catch (error) {
+        musicLabel.textContent = "TAP TO PLAY";
+        console.log("Müzik başlatılamadı:", error);
+      }
+    }
+  });
+</script>
 </body>
 </html>
