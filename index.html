@@ -3,32 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b0b0b" />
-  <meta
-    name="description"
-    content="Évraune — Kendi koku karakterini keşfet."
-  />
+  <meta name="theme-color" content="#111111" />
+  <meta name="description" content="ÉVRAUNE — Zamansız karakterler için modern parfümler." />
 
-  <title>Évraune — Your Scent, Your Signature</title>
+  <title>ÉVRAUNE — Modern Parfumerie</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      --bg: #090909;
-      --bg-soft: #111111;
-      --card: #161616;
-      --line: rgba(255, 255, 255, 0.12);
-      --text: #f4f0e9;
-      --muted: #aaa49b;
-      --gold: #c9a875;
-      --gold-light: #e4cda2;
-      --white: #ffffff;
+      --bg: #f3efe9;
+      --paper: #ebe4db;
+      --text: #171614;
+      --muted: #77716a;
+      --line: rgba(23, 22, 20, 0.16);
+      --dark: #171614;
+      --white: #f8f6f2;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Inter", Arial, sans-serif;
     }
 
     * {
@@ -44,7 +41,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: "DM Sans", sans-serif;
+      font-family: var(--sans);
       overflow-x: hidden;
     }
 
@@ -53,97 +50,887 @@
       text-decoration: none;
     }
 
-    button {
+    button,
+    input {
       font: inherit;
     }
 
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    .eyebrow {
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 4px;
+    .announcement {
+      background: var(--dark);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 9px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      margin-bottom: 22px;
     }
 
-    .serif {
-      font-family: "Playfair Display", serif;
-    }
-
-    /* NAVBAR */
-
-    .navbar {
-      position: fixed;
-      z-index: 1000;
-      top: 0;
+    header {
+      position: absolute;
+      z-index: 10;
+      top: 38px;
       left: 0;
       width: 100%;
-      height: 82px;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(
-        to bottom,
-        rgba(9, 9, 9, 0.95),
-        rgba(9, 9, 9, 0)
-      );
-    }
-
-    .nav-inner {
-      width: min(1280px, calc(100% - 48px));
-      margin: 0 auto;
+      padding: 24px 5vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      color: var(--white);
+      mix-blend-mode: normal;
     }
 
     .logo {
-      font-family: "Playfair Display", serif;
-      font-size: 28px;
-      letter-spacing: 1px;
-      font-weight: 500;
+      font-family: var(--serif);
+      font-size: 31px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
     }
 
-    .logo span {
-      color: var(--gold);
-    }
-
-    .nav-links {
+    .nav {
       display: flex;
-      gap: 34px;
       align-items: center;
-      font-size: 12px;
-      color: #d4d0c8;
-      letter-spacing: 1px;
+      gap: 32px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    .nav-links a {
+    .nav a {
+      position: relative;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav a:hover {
+      opacity: 0.55;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .menu-button {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.62) 0%,
+          rgba(0, 0, 0, 0.26) 45%,
+          rgba(0, 0, 0, 0.1) 100%
+        ),
+        url("https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg?auto=compress&cs=tinysrgb&w=2200")
+        center center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.45),
+        transparent 55%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 5vw 8vh;
+      color: var(--white);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 22px;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 35px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.7;
+    }
+
+    .hero-title {
+      max-width: 850px;
+      font-family: var(--serif);
+      font-size: clamp(70px, 11vw, 170px);
+      line-height: 0.76;
+      font-weight: 400;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      margin-top: 48px;
+    }
+
+    .hero-description {
+      max-width: 310px;
+      font-size: 11px;
+      line-height: 1.8;
+      font-weight: 300;
+      color: rgba(248, 246, 242, 0.82);
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid rgba(248, 246, 242, 0.65);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: gap 0.3s ease;
+    }
+
+    .hero-link:hover {
+      gap: 23px;
+    }
+
+    .hero-link span {
+      font-size: 18px;
+      line-height: 0;
+    }
+
+    .section {
+      padding: 120px 5vw;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10vw;
+      align-items: start;
+    }
+
+    .section-number {
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .intro-title {
+      margin-top: 38px;
+      max-width: 610px;
+      font-family: var(--serif);
+      font-size: clamp(40px, 5vw, 75px);
+      line-height: 0.96;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+    }
+
+    .intro-right {
+      padding-top: 58px;
+    }
+
+    .intro-text {
+      max-width: 370px;
+      color: #625d56;
+      font-size: 12px;
+      line-height: 2;
+      font-weight: 300;
+    }
+
+    .text-link {
+      display: inline-block;
+      margin-top: 35px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--text);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .collection {
+      background: var(--paper);
+    }
+
+    .collection-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 55px;
+    }
+
+    .collection-title {
+      margin-top: 30px;
+      font-family: var(--serif);
+      font-size: clamp(52px, 7vw, 100px);
+      line-height: 0.8;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+    }
+
+    .collection-note {
+      max-width: 220px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.8;
+      text-align: right;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product {
+      min-width: 0;
+    }
+
+    .product-image {
+      position: relative;
+      aspect-ratio: 0.78;
+      overflow: hidden;
+      background: #d8d0c5;
+    }
+
+    .product-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.24),
+        transparent 42%,
+        rgba(0, 0, 0, 0.08)
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .product:hover .product-image img {
+      transform: scale(1.045);
+    }
+
+    .product-overlay {
+      position: absolute;
+      z-index: 2;
+      left: 22px;
+      bottom: 22px;
+      color: white;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding-top: 19px;
+    }
+
+    .product-name {
+      font-family: var(--serif);
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .product-type {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .product-price {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 650px;
+      padding: 0;
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .story-image {
+      min-height: 650px;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.25)),
+        url("https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg?auto=compress&cs=tinysrgb&w=1600")
+        center / cover no-repeat;
+    }
+
+    .story-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 8vw;
+    }
+
+    .story-content .section-number {
+      color: #aaa49b;
+    }
+
+    .story-title {
+      margin-top: 35px;
+      max-width: 500px;
+      font-family: var(--serif);
+      font-size: clamp(45px, 5vw, 75px);
+      line-height: 0.92;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+    }
+
+    .story-text {
+      max-width: 365px;
+      margin-top: 38px;
+      color: #aaa49b;
+      font-size: 12px;
+      line-height: 2;
+      font-weight: 300;
+    }
+
+    .story .text-link {
+      width: fit-content;
+      margin-top: 35px;
+      border-color: #aaa49b;
+      color: var(--white);
+    }
+
+    .quote {
+      padding: 145px 5vw;
+      text-align: center;
+    }
+
+    .quote-mark {
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 80px;
+      line-height: 0.4;
+    }
+
+    .quote-text {
+      max-width: 950px;
+      margin: 45px auto 0;
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 68px);
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+    }
+
+    .quote-author {
+      margin-top: 35px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .newsletter {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10vw;
+      align-items: end;
+      background: var(--paper);
+    }
+
+    .newsletter-title {
+      margin-top: 35px;
+      max-width: 500px;
+      font-family: var(--serif);
+      font-size: clamp(45px, 5vw, 72px);
+      line-height: 0.9;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+    }
+
+    .newsletter-right {
+      padding-bottom: 5px;
+    }
+
+    .newsletter-description {
+      max-width: 350px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+      border-bottom: 1px solid var(--text);
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      padding: 15px 0;
+      color: var(--text);
+      font-size: 11px;
+    }
+
+    .newsletter-form input::placeholder {
+      color: #969087;
+    }
+
+    .newsletter-form button {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      padding: 15px 0 15px 20px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 65px 5vw 28px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      padding-bottom: 70px;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 43px;
+      letter-spacing: 0.12em;
+    }
+
+    .footer-tagline {
+      max-width: 220px;
+      margin-top: 17px;
+      color: #8e8981;
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 70px;
+    }
+
+    .footer-column-title {
+      margin-bottom: 20px;
+      color: #8e8981;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .footer-column a {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      color: #ddd8d0;
       transition: color 0.3s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--gold-light);
+    .footer-column a:hover {
+      color: white;
     }
 
-    .nav-button {
-      border: 1px solid var(--line);
-      padding: 12px 18px;
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: 0.3s ease;
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 22px;
+      color: #77726b;
+      font-size: 9px;
+      letter-spacing: 0.08em;
     }
 
-    .nav-button:hover {
-      background: var(--text);
-      color: #111;
+    .fade-up {
+      animation: fadeUp 1s ease both;
     }
 
-    /* HERO */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
 
-    .hero {
-      min-height: 
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 800px) {
+      header {
+        top: 35px;
+        padding: 20px 6vw;
+      }
+
+      .logo {
+        font-size: 27px;
+      }
+
+      .nav,
+      .header-right {
+        display: none;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .hero {
+        min-height: 88vh;
+        background-position: 58% center;
+      }
+
+      .hero-content {
+        padding: 0 6vw 8vh;
+      }
+
+      .hero-title {
+        font-size: clamp(65px, 19vw, 130px);
+      }
+
+      .hero-bottom {
+        display: block;
+        margin-top: 35px;
+      }
+
+      .hero-link {
+        margin-top: 30px;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .intro,
+      .newsletter {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .intro-right {
+        padding-top: 0;
+      }
+
+      .intro-title {
+        margin-top: 28px;
+      }
+
+      .collection-head {
+        display: block;
+      }
+
+      .collection-note {
+        margin-top: 25px;
+        text-align: left;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .product-image {
+        aspect-ratio: 0.95;
+      }
+
+      .story {
+        grid-template-columns: 1fr;
+      }
+
+      .story-image {
+        min-height: 430px;
+      }
+
+      .story-content {
+        padding: 75px 6vw 90px;
+      }
+
+      .quote {
+        padding: 100px 6vw;
+      }
+
+      .quote-text {
+        font-size: 43px;
+      }
+
+      .newsletter-right {
+        padding-bottom: 0;
+      }
+
+      footer {
+        padding: 55px 6vw 25px;
+      }
+
+      .footer-top {
+        display: block;
+        padding-bottom: 45px;
+      }
+
+      .footer-links {
+        gap: 45px;
+        margin-top: 45px;
+      }
+
+      .footer-bottom {
+        display: block;
+        line-height: 2;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    Free shipping on orders over 1.000 TL
+  </div>
+
+  <header>
+    <a href="#top" class="logo">ÉVRAUNE</a>
+
+    <nav class="nav">
+      <a href="#collection">Collection</a>
+      <a href="#story">Our Story</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <span>TR / EN</span>
+      <span>Bag (0)</span>
+    </div>
+
+    <button class="menu-button" id="menuButton" type="button">
+      Menu
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow fade-up">Modern parfumerie</div>
+
+        <h1 class="hero-title fade-up">
+          Scent<br />
+          of self.
+        </h1>
+
+        <div class="hero-bottom fade-up">
+          <p class="hero-description">
+            Kokunun hafızayla, karakterle ve hislerle buluştuğu bir dünya.
+            ÉVRAUNE, kendini ifade etmenin en kişisel yolunu keşfeder.
+          </p>
+
+          <a href="#collection" class="hero-link">
+            Koleksiyonu keşfet
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro">
+      <div>
+        <div class="section-number">01 — The essence</div>
+
+        <h2 class="intro-title">
+          Her koku,<br />
+          bir iz bırakır.
+        </h2>
+      </div>
+
+      <div class="intro-right">
+        <p class="intro-text">
+          ÉVRAUNE, modern parfümeri anlayışını zamansız bir estetikle
+          buluşturur. Her kompozisyon; ten, anı ve kişilik arasında
+          görünmez bir bağ kurmak için tasarlanır.
+          <br /><br />
+          Sade ama etkileyici. Sessiz ama unutulmaz.
+        </p>
+
+        <a href="#story" class="text-link">ÉVRAUNE hakkında →</a>
+      </div>
+    </section>
+
+    <section class="section collection" id="collection">
+      <div class="collection-head">
+        <div>
+          <div class="section-number">02 — The collection</div>
+          <h2 class="collection-title">Signature<br />scents.</h2>
+        </div>
+
+        <p class="collection-note">
+          Günün her anına eşlik eden, karakteri güçlü ve kalıcı kokular.
+        </p>
+      </div>
+
+      <div class="products">
+        <article class="product">
+          <div class="product-image">
+            <img
+              src="https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="ÉVRAUNE Black parfüm"
+              loading="lazy"
+            />
+            <div class="product-overlay">ÉVRAUNE / 01</div>
+          </div>
+
+          <div class="product-info">
+            <div>
+              <h3 class="product-name">Black</h3>
+              <p class="product-type">Woody · Intense · Bold</p>
+            </div>
+            <div class="product-price">600 TL</div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-image">
+            <img
+              src="https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="ÉVRAUNE Narcotic parfüm"
+              loading="lazy"
+            />
+            <div class="product-overlay">ÉVRAUNE / 02</div>
+          </div>
+
+          <div class="product-info">
+            <div>
+              <h3 class="product-name">Narcotic</h3>
+              <p class="product-type">Floral · Sensual · Deep</p>
+            </div>
+            <div class="product-price">600 TL</div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-image">
+            <img
+              src="https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="ÉVRAUNE Intense parfüm"
+              loading="lazy"
+            />
+            <div class="product-overlay">ÉVRAUNE / 03</div>
+          </div>
+
+          <div class="product-info">
+            <div>
+              <h3 class="product-name">Intensely</h3>
+              <p class="product-type">Amber · Warm · Lasting</p>
+            </div>
+            <div class="product-price">600 TL</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="story-image"></div>
+
+      <div class="story-content">
+        <div class="section-number">03 — Our story</div>
+
+        <h2 class="story-title">
+          Görünenden<br />
+          daha fazlası.
+        </h2>
+
+        <p class="story-text">
+          Bir parfüm yalnızca güzel kokmaz. Bir odayı, bir anı, bir bakışı
+          ve bazen yıllar önce yaşanmış bir hissi yeniden hatırlatır.
+          ÉVRAUNE, bu görünmez hikâyeleri kokuyla anlatır.
+        </p>
+
+        <a href="#contact" class="text-link">Hikâyemizi keşfet →</a>
+      </div>
+    </section>
+
+    <section class="quote">
+      <div class="quote-mark">“</div>
+
+      <p class="quote-text">
+        Your scent is the quietest way to leave the loudest impression.
+      </p>
+
+      <div class="quote-author">The ÉVRAUNE philosophy</div>
+    </section>
+
+    <section class="section newsletter" id="contact">
+      <div>
+        <div class="section-number">04 — Stay close</div>
+
+        <h2 class="newsletter-title">
+          Kokunun<br />
+          dünyasında kal.
+        </h2>
+      </div>
+
+      <div class="newsletter-right">
+        <p class="newsletter-description">
+          Yeni koleksiyonlardan, özel fırsatlardan ve ÉVRAUNE dünyasından
+          haberdar olmak için e-posta listemize katıl.
+        </p>
+
+        <form class="newsletter-form" id="newsletterForm">
+          <input
+            type="email"
+            id="emailInput"
+            placeholder="E-posta adresin"
+        
