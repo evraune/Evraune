@@ -2,12 +2,81 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ÉVRAUNE — Scent is a signature</title>
+
+  <!-- SEO -->
+  <title>ÉVRAUNE Parfüm | Modern Parfümeri & Koku Keşfi</title>
+
+  <meta
+    name="description"
+    content="ÉVRAUNE, karakterinizi ve tarzınızı yansıtan özgün parfümleri keşfetmeniz için tasarlanmış modern bir parfüm markasıdır. Koku keşfi ile size uygun kokuyu bulun."
+  >
+
+  <meta
+    name="keywords"
+    content="ÉVRAUNE, ÉVRAUNE parfüm, parfüm, parfüm markası, kadın parfüm, erkek parfüm, koku keşfi, modern parfümeri, özgün parfüm"
+  >
+
+  <meta name="author" content="ÉVRAUNE">
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://evraune.github.io/Evraune/"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+
+  <meta
+    property="og:title"
+    content="ÉVRAUNE Parfüm | Modern Parfümeri & Koku Keşfi"
+  >
+
+  <meta
+    property="og:description"
+    content="ÉVRAUNE — Koku, görünmeyen imzandır. Sana ait kokuyu keşfet."
+  >
+
+  <meta
+    property="og:url"
+    content="https://evraune.github.io/Evraune/"
+  >
+
+  <meta property="og:site_name" content="ÉVRAUNE">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta
+    name="twitter:title"
+    content="ÉVRAUNE Parfüm | Modern Parfümeri"
+  >
+
+  <meta
+    name="twitter:description"
+    content="ÉVRAUNE ile sana ait kokuyu keşfet."
+  >
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "name": "ÉVRAUNE",
+    "description": "Modern parfümeri ve özgün parfüm markası.",
+    "url": "https://evraune.github.io/Evraune/"
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
@@ -204,7 +273,7 @@
     }
 
     .hero-description {
-      max-width: 390px;
+      max-width: 430px;
       color: #bdb7ad;
       font-size: 14px;
       line-height: 1.9;
@@ -730,6 +799,7 @@
         opacity: 0;
         transform: translateY(25px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -880,12 +950,16 @@
   <div class="cursor-glow" id="cursorGlow"></div>
 
   <header>
-    <a href="#" class="logo">ÉVRAUNE</a>
+    <a href="#" class="logo" aria-label="ÉVRAUNE ana sayfa">ÉVRAUNE</a>
 
     <div class="header-right">
       <a href="#collection" class="header-link">Collection</a>
       <a href="#discovery" class="header-link">Koku keşfet</a>
-      <button class="menu-button" onclick="document.querySelector('#discovery').scrollIntoView({behavior:'smooth'})">
+
+      <button
+        class="menu-button"
+        onclick="document.querySelector('#discovery').scrollIntoView({behavior:'smooth'})"
+      >
         Menü
       </button>
     </div>
@@ -893,563 +967,18 @@
 
   <main>
 
+    <!-- HERO -->
     <section class="hero">
+
       <div class="hero-content">
-        <div class="eyebrow">Modern parfumerie</div>
+
+        <div class="eyebrow">
+          ÉVRAUNE — Modern Parfüm Markası
+        </div>
 
         <h1>
           Scent
           <em>is self.</em>
         </h1>
 
-        <p class="hero-description">
-          Koku; hafızayla, karakterle ve hislerle buluştuğu anda
-          kişisel bir imzaya dönüşür. ÉVRAUNE, kendini ifade
-          etmenin en özel yolunu keşfeder.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#discovery" class="gold-button">
-            Koku keşfine başla
-            <span>↗</span>
-          </a>
-
-          <a href="#collection" class="text-button">
-            Koleksiyonu keşfet
-          </a>
-        </div>
-      </div>
-
-      <div class="scroll-indicator">
-        <span class="scroll-line"></span>
-        Scroll to explore
-      </div>
-
-      <div class="hero-side-text">
-        ÉVRAUNE — Olfactory identity
-      </div>
-    </section>
-
-    <section class="intro">
-      <div>
-        <div class="section-label">01 — Felsefe</div>
-
-        <h2>
-          Bir koku değil.
-          <br>
-          <em>Bir iz.</em>
-        </h2>
-      </div>
-
-      <div class="intro-text">
-        <strong>Koku, görünmeyen imzandır.</strong>
-
-        ÉVRAUNE, parfümü yalnızca güzel kokmak olarak değil;
-        karakteri, anıları ve duyguları ifade eden kişisel
-        bir deneyim olarak ele alır.
-
-        Her nota bir his, her dokunuş bir hikâye anlatır.
-      </div>
-    </section>
-
-    <section class="discovery" id="discovery">
-      <div class="discovery-inner">
-
-        <div class="discovery-top">
-          <div>
-            <div class="section-label">02 — Koku keşfi</div>
-
-            <h2>
-              Sana ait
-              <br>
-              <em>kokuyu bul.</em>
-            </h2>
-          </div>
-
-          <p class="discovery-intro">
-            Birkaç soruyla koku zevkini keşfedelim.
-            Seçimlerin, sana en uygun ÉVRAUNE
-            deneyimini oluşturmamıza yardımcı olacak.
-          </p>
-        </div>
-
-        <div class="quiz-box" id="quizBox">
-
-          <div class="quiz-progress">
-            <span id="progressText">01 / 05</span>
-            <div class="progress-bar">
-              <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <span>Discovery</span>
-          </div>
-
-          <div id="quizContent">
-            <div class="question-number" id="questionNumber">
-              QUESTION 01
-            </div>
-
-            <h3 class="question-title" id="questionTitle">
-              Nasıl bir koku karakteri seni yansıtır?
-            </h3>
-
-            <div class="options" id="options"></div>
-
-            <div class="quiz-bottom">
-              <span class="quiz-count" id="quizCount">
-                Bir seçim yap
-              </span>
-
-              <button class="quiz-next" id="nextButton" onclick="nextQuestion()">
-                Devam et ↗
-              </button>
-            </div>
-          </div>
-
-          <div class="result" id="result">
-            <div class="section-label">Profilin hazır</div>
-
-            <h3>Kokun seni anlatsın.</h3>
-
-            <p>
-              Seçimlerini ÉVRAUNE danışmanına gönder.
-              Sana en uygun parfüm önerisini birlikte oluşturalım.
-            </p>
-
-            <button class="whatsapp-button" onclick="sendToWhatsApp()">
-              WhatsApp’a gönder ↗
-            </button>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="collection" id="collection">
-      <div class="collection-header">
-        <div>
-          <div class="section-label">03 — Koleksiyon</div>
-          <h2>
-            The ÉVRAUNE
-            <br>
-            <em>collection.</em>
-          </h2>
-        </div>
-
-        <p>
-          Farklı karakterler, farklı anlar,
-          tek bir kişisel imza.
-        </p>
-      </div>
-
-      <div class="products">
-
-        <article class="product">
-          <div class="product-image"></div>
-          <div class="product-price">600 TL</div>
-          <div class="product-info">
-            <div class="product-index">ÉVRAUNE / 01</div>
-            <div class="product-name">Black</div>
-            <div class="product-type">Woody · Intense · Bold</div>
-          </div>
-        </article>
-
-        <article class="product">
-          <div class="product-image"></div>
-          <div class="product-price">600 TL</div>
-          <div class="product-info">
-            <div class="product-index">ÉVRAUNE / 02</div>
-            <div class="product-name">Narcotic</div>
-            <div class="product-type">Floral · Sensual · Deep</div>
-          </div>
-        </article>
-
-        <article class="product">
-          <div class="product-image"></div>
-          <div class="product-price">600 TL</div>
-          <div class="product-info">
-            <div class="product-index">ÉVRAUNE / 03</div>
-            <div class="product-name">Intensely</div>
-            <div class="product-type">Amber · Warm · Magnetic</div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="brand">
-      <div class="section-label">04 — ÉVRAUNE</div>
-
-      <h2>
-        Your scent.
-        <br>
-        <em>Your signature.</em>
-      </h2>
-
-      <p>
-        Her insanın kendine ait bir kokusu vardır.
-        Bizim işimiz, o kokuyu birlikte keşfetmek.
-      </p>
-
-      <div class="brand-symbol">É</div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="footer-logo">ÉVRAUNE</div>
-
-    <div class="footer-copy">
-      Modern parfumerie © 2026
-    </div>
-
-    <div class="footer-social">
-      <a href="#discovery">Instagram</a>
-      <a href="#discovery">WhatsApp</a>
-    </div>
-  </footer>
-
-  <script>
-    const WHATSAPP_NUMBER = "905334898006";
-
-    const questions = [
-      {
-        title: "Nasıl bir koku karakteri seni yansıtır?",
-        options: [
-          {
-            label: "Gizemli",
-            desc: "Derin ve karanlık",
-            value: "Gizemli ve karanlık"
-          },
-          {
-            label: "Zarif",
-            desc: "Temiz ve rafine",
-            value: "Zarif ve rafine"
-          },
-          {
-            label: "Cesur",
-            desc: "Yoğun ve dikkat çekici",
-            value: "Cesur ve yoğun"
-          },
-          {
-            label: "Özgür",
-            desc: "Taze ve enerjik",
-            value: "Özgür ve enerjik"
-          }
-        ]
-      },
-      {
-        title: "Parfümünü en çok ne zaman kullanacaksın?",
-        options: [
-          {
-            label: "Gündüz",
-            desc: "Günlük kullanım",
-            value: "Gündüz"
-          },
-          {
-            label: "Gece",
-            desc: "Özel anlar",
-            value: "Gece"
-          },
-          {
-            label: "İş / Ofis",
-            desc: "Profesyonel ortam",
-            value: "İş ve ofis"
-          },
-          {
-            label: "Her an",
-            desc: "Günün her saati",
-            value: "Her an"
-          }
-        ]
-      },
-      {
-        title: "Hangi koku ailesi sana daha yakın?",
-        options: [
-          {
-            label: "Odunsu",
-            desc: "Sedir, sandal, vetiver",
-            value: "Odunsu notalar"
-          },
-          {
-            label: "Çiçeksi",
-            desc: "Gül, yasemin, iris",
-            value: "Çiçeksi notalar"
-          },
-          {
-            label: "Amber",
-            desc: "Vanilya, reçine, sıcaklık",
-            value: "Amber ve sıcak notalar"
-          },
-          {
-            label: "Taze",
-            desc: "Narenciye, temiz, ferah",
-            value: "Taze ve ferah notalar"
-          }
-        ]
-      },
-      {
-        title: "Kokunun yoğunluğu nasıl olmalı?",
-        options: [
-          {
-            label: "Hafif",
-            desc: "Tenine yakın",
-            value: "Hafif"
-          },
-          {
-            label: "Dengeli",
-            desc: "Fark edilir ama zarif",
-            value: "Dengeli"
-          },
-          {
-            label: "Yoğun",
-            desc: "Belirgin ve kalıcı",
-            value: "Yoğun"
-          },
-          {
-            label: "Çok yoğun",
-            desc: "Güçlü bir iz",
-            value: "Çok yoğun"
-          }
-        ]
-      },
-      {
-        title: "Kokun nasıl bir his bırakmalı?",
-        options: [
-          {
-            label: "Güven",
-            desc: "Güçlü ve kararlı",
-            value: "Güven veren"
-          },
-          {
-            label: "Çekicilik",
-            desc: "Sıcak ve etkileyici",
-            value: "Çekici ve etkileyici"
-          },
-          {
-            label: "Huzur",
-            desc: "Sakin ve temiz",
-            value: "Huzurlu ve temiz"
-          },
-          {
-            label: "Merak",
-            desc: "Gizemli ve farklı",
-            value: "Merak uyandıran"
-          }
-        ]
-      }
-    ];
-
-    let currentQuestion = 0;
-    let answers = [];
-
-    const optionsElement = document.getElementById("options");
-    const questionTitle = document.getElementById("questionTitle");
-    const questionNumber = document.getElementById("questionNumber");
-    const progressText = document.getElementById("progressText");
-    const progressFill = document.getElementById("progressFill");
-    const quizCount = document.getElementById("quizCount");
-    const nextButton = document.getElementById("nextButton");
-    const quizContent = document.getElementById("quizContent");
-    const result = document.getElementById("result");
-
-    function renderQuestion() {
-      const question = questions[currentQuestion];
-
-      questionTitle.textContent = question.title;
-      questionNumber.textContent =
-        "QUESTION " + String(currentQuestion + 1).padStart(2, "0");
-
-      progressText.textContent =
-        String(currentQuestion + 1).padStart(2, "0") + " / 05";
-
-      progressFill.style.width =
-        ((currentQuestion + 1) / questions.length) * 100 + "%";
-
-      optionsElement.innerHTML = "";
-
-      question.options.forEach((option, index) => {
-        const button = document.createElement("button");
-        button.className = "option";
-
-        button.innerHTML = `
-          <small>0${index + 1}</small>
-          <strong>${option.label}</strong>
-          <div style="color:#777166;font-size:11px;margin-top:7px;">
-            ${option.desc}
-          </div>
-        `;
-
-        button.onclick = () => {
-          document.querySelectorAll(".option").forEach(item => {
-            item.classList.remove("selected");
-          });
-
-          button.classList.add("selected");
-          answers[currentQuestion] = option.value;
-          quizCount.textContent = "Seçildi: " + option.label;
-          nextButton.style.opacity = "1";
-        };
-
-        optionsElement.appendChild(button);
-      });
-
-      if (answers[currentQuestion]) {
-        quizCount.textContent = "Seçimin kaydedildi";
-      } else {
-        quizCount.textContent = "Bir seçim yap";
-      }
-
-      nextButton.textContent =
-        currentQuestion === questions.length - 1
-          ? "Profilimi oluştur ↗"
-          : "Devam et ↗";
-    }
-
-    function nextQuestion() {
-      if (!answers[currentQuestion]) {
-        quizCount.textContent = "Devam etmek için bir seçim yap";
-        quizCount.style.color = "#c8ad78";
-        return;
-      }
-
-      if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
-        renderQuestion();
-      } else {
-        quizContent.style.display = "none";
-        result.classList.add("show");
-      }
-    }
-
-    function sendToWhatsApp() {
-      const message = `
-Merhaba ÉVRAUNE,
-
-Koku keşfi sonucumu paylaşmak istiyorum.
-
-Koku karakterim: ${answers[0]}
-Kullanım zamanı: ${answers[1]}
-Sevdiğim koku ailesi: ${answers[2]}
-Yoğunluk tercihim: ${answers[3]}
-Bırakmasını istediğim his: ${answers[4]}
-
-Bana uygun parfüm önerinizi öğrenmek istiyorum.
-      `.trim();
-
-      const url =
-        "https://wa.me/" +
-        WHATSAPP_NUMBER +
-        "?text=" +
-        encodeURIComponent(message);
-
-      window.open(url, "_blank");
-    }
-
-    const cursorGlow = document.getElementById("cursorGlow");
-
-    document.addEventListener("mousemove", (event) => {
-      cursorGlow.style.left = event.clientX + "px";
-      cursorGlow.style.top = event.clientY + "px";
-    });
-
-    renderQuestion();
-  </script>
-<!-- ÉVRAUNE AMBIENT MUSIC -->
-<audio id="ambientMusic" loop preload="auto">
-  <source src="fassounds-escape-your-love-upbeat-fashion-pop-dance-412230.mp3" type="audio/mpeg">
-</audio>
-
-<button id="musicToggle" class="music-toggle" aria-label="Müziği aç veya kapat">
-  <span class="music-icon">♫</span>
-  <span id="musicLabel">MUSIC OFF</span>
-</button>
-
-<style>
-  .music-toggle {
-    position: fixed;
-    right: 22px;
-    bottom: 22px;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid rgba(200, 173, 120, 0.55);
-    background: rgba(10, 10, 9, 0.88);
-    backdrop-filter: blur(12px);
-    color: #c8ad78;
-    padding: 12px 16px;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .music-toggle:hover {
-    background: #c8ad78;
-    color: #0a0a09;
-  }
-
-  .music-icon {
-    font-size: 16px;
-    line-height: 1;
-  }
-
-  .music-toggle.playing {
-    border-color: #c8ad78;
-    box-shadow: 0 0 18px rgba(200, 173, 120, 0.18);
-  }
-
-  .music-toggle.playing .music-icon {
-    animation: musicPulse 1.2s ease-in-out infinite;
-  }
-
-  @keyframes musicPulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-  }
-
-  @media (max-width: 600px) {
-    .music-toggle {
-      right: 15px;
-      bottom: 15px;
-      padding: 11px 13px;
-      font-size: 8px;
-    }
-  }
-</style>
-
-<script>
-  const ambientMusic = document.getElementById("ambientMusic");
-  const musicToggle = document.getElementById("musicToggle");
-  const musicLabel = document.getElementById("musicLabel");
-
-  let musicPlaying = false;
-
-  musicToggle.addEventListener("click", async function () {
-    if (musicPlaying) {
-      ambientMusic.pause();
-      musicPlaying = false;
-
-      musicLabel.textContent = "MUSIC OFF";
-      musicToggle.classList.remove("playing");
-    } else {
-      try {
-        await ambientMusic.play();
-
-        musicPlaying = true;
-        musicLabel.textContent = "MUSIC ON";
-        musicToggle.classList.add("playing");
-      } catch (error) {
-        musicLabel.textContent = "TAP TO PLAY";
-        console.log("Müzik başlatılamadı:", error);
-      }
-    }
-  });
-</script>
-</body>
-</html>
+        <p class="h
