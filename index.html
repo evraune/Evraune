@@ -1,1473 +1,1424 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ÉVRAUNE SEO -->
-  <title>ÉVRAUNE Parfüm | Modern Parfümeri & Koku Keşfi</title>
-
-  <meta name="description" content="ÉVRAUNE ile karakterinize ve tarzınıza uygun parfümü keşfedin. Koku keşfi deneyimini tamamlayın ve size uygun parfüm önerisini WhatsApp üzerinden alın.">
-
-  <meta name="keywords" content="ÉVRAUNE, Evraune, ÉVRAUNE parfüm, Evraune parfüm, parfüm, parfüm keşfi, koku keşfi, parfüm önerisi, modern parfümeri">
-
-  <meta name="robots" content="index, follow">
-
-  <link rel="canonical" href="https://evraune.github.io/Evraune/">
-
-  <!-- Google / Social -->
-  <meta property="og:title" content="ÉVRAUNE Parfüm | Modern Parfümeri & Koku Keşfi">
-  <meta property="og:description" content="Kendine ait kokuyu keşfet. ÉVRAUNE koku keşfi deneyimini yaşa.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://evraune.github.io/Evraune/">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --black: #0a0a09;
-      --soft-black: #11110f;
-      --gold: #c8ad78;
-      --light-gold: #e0c998;
-      --white: #f2eee6;
-      --muted: #a7a096;
-      --line: rgba(224, 201, 152, 0.25);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: "DM Sans", sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-      cursor: pointer;
-    }
-
-    .grain {
-      position: fixed;
-      inset: 0;
-      z-index: 20;
-      pointer-events: none;
-      opacity: 0.06;
-      background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-      mix-blend-mode: screen;
-    }
-
-    .cursor-glow {
-      position: fixed;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        rgba(200, 173, 120, 0.08),
-        transparent 65%
-      );
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-    }
-
-    header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 30px 5vw;
-    }
-
-    .logo {
-      font-family: "Playfair Display", serif;
-      font-size: 27px;
-      letter-spacing: 7px;
-      color: var(--white);
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .header-link {
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color 0.3s ease;
-    }
-
-    .header-link:hover {
-      color: var(--light-gold);
-    }
-
-    .menu-button {
-      border: 1px solid var(--line);
-      background: transparent;
-      color: var(--white);
-      padding: 12px 18px;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-    }
-
-    .menu-button:hover {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(5, 5, 4, 0.98) 0%,
-          rgba(5, 5, 4, 0.82) 38%,
-          rgba(5, 5, 4, 0.35) 75%,
-          rgba(5, 5, 4, 0.7) 100%
-        ),
-        url("https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=2200&q=90")
-        center / cover;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        0deg,
-        var(--black) 0%,
-        transparent 25%,
-        transparent 75%,
-        rgba(0,0,0,0.35) 100%
-      );
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 90%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding-top: 70px;
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      color: var(--light-gold);
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 30px;
-      animation: fadeUp 1s ease both;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 42px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    h1 {
-      font-family: "Playfair Display", serif;
-      font-weight: 400;
-      font-size: clamp(72px, 11vw, 175px);
-      line-height: 0.84;
-      letter-spacing: -7px;
-      max-width: 850px;
-      animation: fadeUp 1s 0.15s ease both;
-    }
-
-    h1 em {
-      display: block;
-      color: var(--light-gold);
-      font-weight: 400;
-      margin-left: 13vw;
-    }
-
-    .hero-description {
-      max-width: 390px;
-      color: #bdb7ad;
-      font-size: 14px;
-      line-height: 1.9;
-      margin-top: 45px;
-      animation: fadeUp 1s 0.3s ease both;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      margin-top: 42px;
-      animation: fadeUp 1s 0.45s ease both;
-    }
-
-    .gold-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 25px;
-      background: var(--gold);
-      color: var(--black);
-      border: none;
-      padding: 17px 24px;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      transition: all 0.4s ease;
-    }
-
-    .gold-button span {
-      font-size: 18px;
-      line-height: 0;
-      transition: transform 0.4s ease;
-    }
-
-    .gold-button:hover {
-      background: var(--light-gold);
-      padding-right: 30px;
-    }
-
-    .gold-button:hover span {
-      transform: translateX(5px);
-    }
-
-    .text-button {
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 8px;
-      transition: color 0.3s ease;
-    }
-
-    .text-button:hover {
-      color: var(--light-gold);
-    }
-
-    .hero-side-text {
-      position: absolute;
-      right: 5vw;
-      bottom: 55px;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      color: #817b71;
-      font-size: 9px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      z-index: 2;
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 42px;
-      left: 5vw;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: #817b71;
-      font-size: 9px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .scroll-line {
-      width: 45px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .intro {
-      padding: 160px 5vw;
-      background: var(--black);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12vw;
-      align-items: start;
-    }
-
-    .section-label {
-      color: var(--gold);
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 30px;
-    }
-
-    .intro h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(38px, 5vw, 70px);
-      line-height: 1.05;
-      font-weight: 400;
-      max-width: 500px;
-    }
-
-    .intro h2 em {
-      color: var(--gold);
-    }
-
-    .intro-text {
-      padding-top: 55px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 2;
-      max-width: 430px;
-    }
-
-    .intro-text strong {
-      display: block;
-      color: var(--white);
-      font-family: "Playfair Display", serif;
-      font-size: 26px;
-      font-weight: 400;
-      margin-bottom: 25px;
-    }
-
-    .discovery {
-      position: relative;
-      padding: 150px 5vw;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(10,10,9,0.98),
-          rgba(10,10,9,0.84)
-        ),
-        url("https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=2200&q=85")
-        center / cover fixed;
-    }
-
-    .discovery-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .discovery-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 70px;
-    }
-
-    .discovery h2 {
-      font-family: "Playfair Display", serif;
-      font-weight: 400;
-      font-size: clamp(42px, 6vw, 85px);
-      line-height: 0.95;
-      max-width: 650px;
-    }
-
-    .discovery h2 em {
-      color: var(--gold);
-    }
-
-    .discovery-intro {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-      max-width: 260px;
-    }
-
-    .quiz-box {
-      border: 1px solid var(--line);
-      background: rgba(10, 10, 9, 0.75);
-      backdrop-filter: blur(12px);
-      padding: 45px;
-      max-width: 850px;
-    }
-
-    .quiz-progress {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 50px;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .progress-bar {
-      height: 1px;
-      background: #34332f;
-      flex: 1;
-      margin: 0 25px;
-    }
-
-    .progress-fill {
-      width: 20%;
-      height: 100%;
-      background: var(--gold);
-      transition: width 0.4s ease;
-    }
-
-    .question-number {
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-    }
-
-    .question-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(30px, 4vw, 50px);
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 35px;
-    }
-
-    .options {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .option {
-      position: relative;
-      border: 1px solid #38362f;
-      background: transparent;
-      color: #bdb7ad;
-      text-align: left;
-      padding: 22px;
-      min-height: 90px;
-      transition: all 0.3s ease;
-    }
-
-    .option small {
-      display: block;
-      color: #6e695f;
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .option strong {
-      font-family: "Playfair Display", serif;
-      font-size: 21px;
-      font-weight: 400;
-      color: var(--white);
-    }
-
-    .option:hover,
-    .option.selected {
-      border-color: var(--gold);
-      background: rgba(200, 173, 120, 0.08);
-    }
-
-    .option.selected::after {
-      content: "✓";
-      position: absolute;
-      right: 15px;
-      top: 15px;
-      color: var(--gold);
-    }
-
-    .quiz-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 45px;
-    }
-
-    .quiz-count {
-      color: #6e695f;
-      font-size: 10px;
-      letter-spacing: 2px;
-    }
-
-    .quiz-next {
-      border: 1px solid var(--gold);
-      background: transparent;
-      color: var(--light-gold);
-      padding: 15px 25px;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-    }
-
-    .quiz-next:hover {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    .collection {
-      padding: 150px 5vw;
-      background: #11110f;
-    }
-
-    .collection-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      margin-bottom: 70px;
-    }
-
-    .collection-header h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(45px, 6vw, 85px);
-      font-weight: 400;
-      line-height: 0.95;
-    }
-
-    .collection-header p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-      max-width: 280px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .product {
-      position: relative;
-      min-height: 560px;
-      overflow: hidden;
-      background: #1b1a17;
-    }
-
-    .product-image {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.8s ease;
-    }
-
-    .product:nth-child(1) .product-image {
-      background-image:
-        linear-gradient(0deg, rgba(0,0,0,0.75), transparent 60%),
-        url("https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1000&q=85");
-    }
-
-    .product:nth-child(2) .product-image {
-      background-image:
-        linear-gradient(0deg, rgba(0,0,0,0.75), transparent 60%),
-        url("https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=1000&q=85");
-    }
-
-    .product:nth-child(3) .product-image {
-      background-image:
-        linear-gradient(0deg, rgba(0,0,0,0.75), transparent 60%),
-        url("https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1000&q=85");
-    }
-
-    .product:hover .product-image {
-      transform: scale(1.06);
-    }
-
-    .product-info {
-      position: absolute;
-      inset: auto 30px 30px;
-      z-index: 2;
-    }
-
-    .product-index {
-      color: var(--gold);
-      font-size: 10px;
-      letter-spacing: 3px;
-      margin-bottom: 14px;
-    }
-
-    .product-name {
-      font-family: "Playfair Display", serif;
-      font-size: 42px;
-      font-weight: 400;
-      margin-bottom: 8px;
-    }
-
-    .product-type {
-      color: #b0a99e;
-      font-size: 9px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .product-price {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      color: var(--white);
-      font-size: 13px;
-    }
-
-    .brand {
-      padding: 170px 5vw;
-      text-align: center;
-      background: var(--black);
-    }
-
-    .brand h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(50px, 8vw, 125px);
-      line-height: 0.95;
-      font-weight: 400;
-      letter-spacing: -3px;
-    }
-
-    .brand h2 em {
-      color: var(--gold);
-    }
-
-    .brand p {
-      max-width: 470px;
-      margin: 40px auto 0;
-      color: var(--muted);
-      line-height: 2;
-      font-size: 14px;
-    }
-
-    .brand-symbol {
-      margin: 55px auto 0;
-      width: 70px;
-      height: 70px;
-      border: 1px solid var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      font-family: "Playfair Display", serif;
-      font-size: 25px;
-    }
-
-    footer {
-      border-top: 1px solid #292823;
-      padding: 45px 5vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-      background: #0d0d0c;
-    }
-
-    .footer-logo {
-      font-family: "Playfair Display", serif;
-      font-size: 23px;
-      letter-spacing: 5px;
-    }
-
-    .footer-copy {
-      color: #6e695f;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 25px;
-      color: #8f897e;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .result {
-      display: none;
-      text-align: center;
-      padding: 30px 0;
-    }
-
-    .result.show {
-      display: block;
-    }
-
-    .result h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 42px;
-      font-weight: 400;
-      margin-bottom: 20px;
-    }
-
-    .result p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 30px;
-    }
-
-    .whatsapp-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 15px;
-      background: #b9a16f;
-      color: #0a0a09;
-      padding: 17px 24px;
-      border: none;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 800px) {
-      header {
-        padding: 25px 22px;
-      }
-
-      .logo {
-        font-size: 22px;
-        letter-spacing: 5px;
-      }
-
-      .header-link {
-        display: none;
-      }
-
-      .hero {
-        min-height: 100svh;
-        background-position: 62% center;
-      }
-
-      .hero-content {
-        width: auto;
-        margin: 0 22px;
-        padding-top: 100px;
-      }
-
-      h1 {
-        font-size: clamp(66px, 20vw, 105px);
-        letter-spacing: -4px;
-      }
-
-      h1 em {
-        margin-left: 12vw;
-      }
-
-      .hero-description {
-        font-size: 13px;
-        max-width: 310px;
-        margin-top: 35px;
-      }
-
-      .hero-actions {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 25px;
-      }
-
-      .hero-side-text {
-        display: none;
-      }
-
-      .scroll-indicator {
-        left: 22px;
-        bottom: 25px;
-      }
-
-      .intro {
-        display: block;
-        padding: 100px 22px;
-      }
-
-      .intro-text {
-        padding-top: 40px;
-      }
-
-      .discovery {
-        padding: 100px 22px;
-        background-attachment: scroll;
-      }
-
-      .discovery-top {
-        display: block;
-        margin-bottom: 45px;
-      }
-
-      .discovery-intro {
-        margin-top: 30px;
-      }
-
-      .quiz-box {
-        padding: 25px 20px;
-      }
-
-      .quiz-progress {
-        margin-bottom: 35px;
-      }
-
-      .options {
-        grid-template-columns: 1fr;
-      }
-
-      .option {
-        min-height: 75px;
-        padding: 17px;
-      }
-
-      .option strong {
-        font-size: 19px;
-      }
-
-      .quiz-bottom {
-        margin-top: 30px;
-      }
-
-      .collection {
-        padding: 100px 22px;
-      }
-
-      .collection-header {
-        display: block;
-        margin-bottom: 45px;
-      }
-
-      .collection-header p {
-        margin-top: 25px;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
-
-      .product {
-        min-height: 470px;
-      }
-
-      .brand {
-        padding: 110px 22px;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 35px 22px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="grain"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <header>
-    <a href="#" class="logo">ÉVRAUNE</a>
-
-    <div class="header-right">
-      <a href="#collection" class="header-link">Collection</a>
-      <a href="#discovery" class="header-link">Koku keşfet</a>
-      <button class="menu-button" onclick="document.querySelector('#discovery').scrollIntoView({behavior:'smooth'})">
-        Menü
-      </button>
-    </div>
-  </header>
-
-  <main>
-
-    <section class="hero">
-      <div class="hero-content">
-        <div class="eyebrow">Modern parfumerie</div>
-
-        <h1>
-          Scent
-          <em>is self.</em>
-        </h1>
-
-        <p class="hero-description">
-          Koku; hafızayla, karakterle ve hislerle buluştuğu anda
-          kişisel bir imzaya dönüşür. ÉVRAUNE, kendini ifade
-          etmenin en özel yolunu keşfeder.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#discovery" class="gold-button">
-            Koku keşfine başla
-            <span>↗</span>
-          </a>
-
-          <a href="#collection" class="text-button">
-            Koleksiyonu keşfet
-          </a>
-        </div>
-      </div>
-
-      <div class="scroll-indicator">
-        <span class="scroll-line"></span>
-        Scroll to explore
-      </div>
-
-      <div class="hero-side-text">
-        ÉVRAUNE — Olfactory identity
-      </div>
-    </section>
-
-    <section class="intro">
-      <div>
-        <div class="section-label">01 — Felsefe</div>
-
-        <h2>
-          Bir koku değil.
-          <br>
-          <em>Bir iz.</em>
-        </h2>
-      </div>
-
-      <div class="intro-text">
-        <strong>Koku, görünmeyen imzandır.</strong>
-
-        ÉVRAUNE, parfümü yalnızca güzel kokmak olarak değil;
-        karakteri, anıları ve duyguları ifade eden kişisel
-        bir deneyim olarak ele alır.
-
-        Her nota bir his, her dokunuş bir hikâye anlatır.
-      </div>
-    </section>
-
-    <section class="discovery" id="discovery">
-      <div class="discovery-inner">
-
-        <div class="discovery-top">
-          <div>
-            <div class="section-label">02 — Koku keşfi</div>
-
-            <h2>
-              Sana ait
-              <br>
-              <em>kokuyu bul.</em>
-            </h2>
-          </div>
-
-          <p class="discovery-intro">
-            Birkaç soruyla koku zevkini keşfedelim.
-            Seçimlerin, sana en uygun ÉVRAUNE
-            deneyimini oluşturmamıza yardımcı olacak.
-          </p>
-        </div>
-
-        <div class="quiz-box" id="quizBox">
-
-          <div class="quiz-progress">
-            <span id="progressText">01 / 05</span>
-            <div class="progress-bar">
-              <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <span>Discovery</span>
-          </div>
-
-          <div id="quizContent">
-            <div class="question-number" id="questionNumber">
-              QUESTION 01
-            </div>
-
-            <h3 class="question-title" id="questionTitle">
-              Nasıl bir koku karakteri seni yansıtır?
-            </h3>
-
-            <div class="options" id="options"></div>
-
-            <div class="quiz-bottom">
-              <span class="quiz-count" id="quizCount">
-                Bir seçim yap
-              </span>
-
-              <button class="quiz-next" id="nextButton" onclick="nextQuestion()">
-                Devam et ↗
-              </button>
-            </div>
-          </div>
-
-          <div class="result" id="result">
-            <div class="section-label">Profilin hazır</div>
-
-            <h3>Kokun seni anlatsın.</h3>
-
-            <p>
-              Seçimlerini ÉVRAUNE danışmanına gönder.
-              Sana en uygun parfüm önerisini birlikte oluşturalım.
-            </p>
-
-            <button class="whatsapp-button" onclick="sendToWhatsApp()">
-              WhatsApp’a gönder ↗
-            </button>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="collection" id="collection">
-      <div class="collection-header">
-        <div>
-          <div class="section-label">03 — Koleksiyon</div>
-          <h2>
-            The ÉVRAUNE
-            <br>
-            <em>collection.</em>
-          </h2>
-        </div>
-
-        <p>
-          Farklı karakterler, farklı anlar,
-          tek bir kişisel imza.
-        </p>
-      </div>
-
-      <div class="products">
-
-        <article class="product">
-          <div class="product-image"></div>
-          <div class="product-price">600 TL</div>
-          <div class="product-info">
-            <div class="product-index">ÉVRAUNE / 01</div>
-            <div class="product-name">Black</div>
-            <div class="product-type">Woody · Intense · Bold</div>
-          </div>
-        </article>
-
-        <article class="product">
-          <div class="product-image"></div>
-          <div class="product-price">600 TL</div>
-          <div class="product-info">
-            <div class="product-index">ÉVRAUNE / 02</div>
-            <div class="product-name">Narcotic</div>
-            <div class="product-type">Floral · Sensual · Deep</div>
-          </div>
-        </article>
-
-        <article class="product">
-          <div class="product-image"></div>
-          <div class="product-price">600 TL</div>
-          <div class="product-info">
-            <div class="product-index">ÉVRAUNE / 03</div>
-            <div class="product-name">Intensely</div>
-            <div class="product-type">Amber · Warm · Magnetic</div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="brand">
-      <div class="section-label">04 — ÉVRAUNE</div>
-
-      <h2>
-        Your scent.
-        <br>
-        <em>Your signature.</em>
-      </h2>
-
-      <p>
-        Her insanın kendine ait bir kokusu vardır.
-        Bizim işimiz, o kokuyu birlikte keşfetmek.
-      </p>
-
-      <div class="brand-symbol">É</div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="footer-logo">ÉVRAUNE</div>
-
-    <div class="footer-copy">
-      Modern parfumerie © 2026
-    </div>
-
-    <div class="footer-social">
-      <a href="#discovery">Instagram</a>
-      <a href="#discovery">WhatsApp</a>
-    </div>
-  </footer>
-
-  <script>
-    const WHATSAPP_NUMBER = "905334898006";
-
-    const questions = [
-      {
-        title: "Nasıl bir koku karakteri seni yansıtır?",
-        options: [
-          {
-            label: "Gizemli",
-            desc: "Derin ve karanlık",
-            value: "Gizemli ve karanlık"
-          },
-          {
-            label: "Zarif",
-            desc: "Temiz ve rafine",
-            value: "Zarif ve rafine"
-          },
-          {
-            label: "Cesur",
-            desc: "Yoğun ve dikkat çekici",
-            value: "Cesur ve yoğun"
-          },
-          {
-            label: "Özgür",
-            desc: "Taze ve enerjik",
-            value: "Özgür ve enerjik"
-          }
-        ]
-      },
-      {
-        title: "Parfümünü en çok ne zaman kullanacaksın?",
-        options: [
-          {
-            label: "Gündüz",
-            desc: "Günlük kullanım",
-            value: "Gündüz"
-          },
-          {
-            label: "Gece",
-            desc: "Özel anlar",
-            value: "Gece"
-          },
-          {
-            label: "İş / Ofis",
-            desc: "Profesyonel ortam",
-            value: "İş ve ofis"
-          },
-          {
-            label: "Her an",
-            desc: "Günün her saati",
-            value: "Her an"
-          }
-        ]
-      },
-      {
-        title: "Hangi koku ailesi sana daha yakın?",
-        options: [
-          {
-            label: "Odunsu",
-            desc: "Sedir, sandal, vetiver",
-            value: "Odunsu notalar"
-          },
-          {
-            label: "Çiçeksi",
-            desc: "Gül, yasemin, iris",
-            value: "Çiçeksi notalar"
-          },
-          {
-            label: "Amber",
-            desc: "Vanilya, reçine, sıcaklık",
-            value: "Amber ve sıcak notalar"
-          },
-          {
-            label: "Taze",
-            desc: "Narenciye, temiz, ferah",
-            value: "Taze ve ferah notalar"
-          }
-        ]
-      },
-      {
-        title: "Kokunun yoğunluğu nasıl olmalı?",
-        options: [
-          {
-            label: "Hafif",
-            desc: "Tenine yakın",
-            value: "Hafif"
-          },
-          {
-            label: "Dengeli",
-            desc: "Fark edilir ama zarif",
-            value: "Dengeli"
-          },
-          {
-            label: "Yoğun",
-            desc: "Belirgin ve kalıcı",
-            value: "Yoğun"
-          },
-          {
-            label: "Çok yoğun",
-            desc: "Güçlü bir iz",
-            value: "Çok yoğun"
-          }
-        ]
-      },
-      {
-        title: "Kokun nasıl bir his bırakmalı?",
-        options: [
-          {
-            label: "Güven",
-            desc: "Güçlü ve kararlı",
-            value: "Güven veren"
-          },
-          {
-            label: "Çekicilik",
-            desc: "Sıcak ve etkileyici",
-            value: "Çekici ve etkileyici"
-          },
-          {
-            label: "Huzur",
-            desc: "Sakin ve temiz",
-            value: "Huzurlu ve temiz"
-          },
-          {
-            label: "Merak",
-            desc: "Gizemli ve farklı",
-            value: "Merak uyandıran"
-          }
-        ]
-      }
-    ];
-
-    let currentQuestion = 0;
-    let answers = [];
-
-    const optionsElement = document.getElementById("options");
-    const questionTitle = document.getElementById("questionTitle");
-    const questionNumber = document.getElementById("questionNumber");
-    const progressText = document.getElementById("progressText");
-    const progressFill = document.getElementById("progressFill");
-    const quizCount = document.getElementById("quizCount");
-    const nextButton = document.getElementById("nextButton");
-    const quizContent = document.getElementById("quizContent");
-    const result = document.getElementById("result");
-
-    function renderQuestion() {
-      const question = questions[currentQuestion];
-
-      questionTitle.textContent = question.title;
-      questionNumber.textContent =
-        "QUESTION " + String(currentQuestion + 1).padStart(2, "0");
-
-      progressText.textContent =
-        String(currentQuestion + 1).padStart(2, "0") + " / 05";
-
-      progressFill.style.width =
-        ((currentQuestion + 1) / questions.length) * 100 + "%";
-
-      optionsElement.innerHTML = "";
-
-      question.options.forEach((option, index) => {
-        const button = document.createElement("button");
-        button.className = "option";
-
-        button.innerHTML = `
-          <small>0${index + 1}</small>
-          <strong>${option.label}</strong>
-          <div style="color:#777166;font-size:11px;margin-top:7px;">
-            ${option.desc}
-          </div>
-        `;
-
-        button.onclick = () => {
-          document.querySelectorAll(".option").forEach(item => {
-            item.classList.remove("selected");
-          });
-
-          button.classList.add("selected");
-          answers[currentQuestion] = option.value;
-          quizCount.textContent = "Seçildi: " + option.label;
-          nextButton.style.opacity = "1";
-        };
-
-        optionsElement.appendChild(button);
-      });
-
-      if (answers[currentQuestion]) {
-        quizCount.textContent = "Seçimin kaydedildi";
-      } else {
-        quizCount.textContent = "Bir seçim yap";
-      }
-
-      nextButton.textContent =
-        currentQuestion === questions.length - 1
-          ? "Profilimi oluştur ↗"
-          : "Devam et ↗";
-    }
-
-    function nextQuestion() {
-      if (!answers[currentQuestion]) {
-        quizCount.textContent = "Devam etmek için bir seçim yap";
-        quizCount.style.color = "#c8ad78";
-        return;
-      }
-
-      if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
-        renderQuestion();
-      } else {
-        quizContent.style.display = "none";
-        result.classList.add("show");
-      }
-    }
-
-    function sendToWhatsApp() {
-      const message = `
-Merhaba ÉVRAUNE,
-
-Koku keşfi sonucumu paylaşmak istiyorum.
-
-Koku karakterim: ${answers[0]}
-Kullanım zamanı: ${answers[1]}
-Sevdiğim koku ailesi: ${answers[2]}
-Yoğunluk tercihim: ${answers[3]}
-Bırakmasını istediğim his: ${answers[4]}
-
-Bana uygun parfüm önerinizi öğrenmek istiyorum.
-      `.trim();
-
-      const url =
-        "https://wa.me/" +
-        WHATSAPP_NUMBER +
-        "?text=" +
-        encodeURIComponent(message);
-
-      window.open(url, "_blank");
-    }
-
-    const cursorGlow = document.getElementById("cursorGlow");
-
-    document.addEventListener("mousemove", (event) => {
-      cursorGlow.style.left = event.clientX + "px";
-      cursorGlow.style.top = event.clientY + "px";
-    });
-
-    renderQuestion();
-  </script>
-
-<!-- ÉVRAUNE AMBIENT MUSIC -->
-<audio id="ambientMusic" loop preload="auto">
-  <source src="fassounds-escape-your-love-upbeat-fashion-pop-dance-412230.mp3" type="audio/mpeg">
-</audio>
-
-<button id="musicToggle" class="music-toggle" aria-label="Müziği aç veya kapat">
-  <span class="music-icon">♫</span>
-  <span id="musicLabel">MUSIC OFF</span>
-</button>
-
-<style>
-  .music-toggle {
-    position: fixed;
-    right: 22px;
-    bottom: 22px;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid rgba(200, 173, 120, 0.55);
-    background: rgba(10, 10, 9, 0.88);
-    backdrop-filter: blur(12px);
-    color: #c8ad78;
-    padding: 12px 16px;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .music-toggle:hover {
-    background: #c8ad78;
-    color: #0a0a09;
-  }
-
-  .music-icon {
-    font-size: 16px;
-    line-height: 1;
-  }
-
-  .music-toggle.playing {
-    border-color: #c8ad78;
-    box-shadow: 0 0 18px rgba(200, 173, 120, 0.18);
-  }
-
-  .music-toggle.playing .music-icon {
-    animation: musicPulse 1.2s ease-in-out infinite;
-  }
-
-  @keyframes musicPulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-  }
-
-  @media (max-width: 600px) {
-    .music-toggle {
-      right: 15px;
-      bottom: 15px;
-      padding: 11px 13px;
-      font-size: 8px;
-    }
-  }
-</style>
-
-<script>
-  const ambientMusic = document.getElementById("ambientMusic");
-  const musicToggle = document.getElementById("musicToggle");
-  const musicLabel = document.getElementById("musicLabel");
-
-  let musicPlaying = false;
-
-  musicToggle.addEventListener("click", async function () {
-    if (musicPlaying) {
-      ambientMusic.pause();
-      musicPlaying = false;
-
-      musicLabel.textContent = "MUSIC OFF";
-      musicToggle.classList.remove("playing");
-    } else {
-      try {
-        await ambientMusic.play();
-
-        musicPlaying = true;
-        musicLabel.textContent = "MUSIC ON";
-        musicToggle.classList.add("playing");
-      } catch (error) {
-        musicLabel.textContent = "TAP TO PLAY";
-        console.log("Müzik başlatılamadı:", error);
-      }
-    }
-  });
-</script>
-
-</body>
+<!DOCTYPE html>  <html lang="tr">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>ÉVRAUNE — Scent is a signature</title>    <link rel="preconnect" href="https://fonts.googleapis.com">  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">    <style>  
+    :root {  
+      --black: #0a0a09;  
+      --soft-black: #11110f;  
+      --gold: #c8ad78;  
+      --light-gold: #e0c998;  
+      --white: #f2eee6;  
+      --muted: #a7a096;  
+      --line: rgba(224, 201, 152, 0.25);  
+    }  
+  
+    * {  
+      margin: 0;  
+      padding: 0;  
+      box-sizing: border-box;  
+    }  
+  
+    html {  
+      scroll-behavior: smooth;  
+    }  
+  
+    body {  
+      background: var(--black);  
+      color: var(--white);  
+      font-family: "DM Sans", sans-serif;  
+      font-weight: 300;  
+      overflow-x: hidden;  
+    }  
+  
+    a {  
+      color: inherit;  
+      text-decoration: none;  
+    }  
+  
+    button {  
+      font: inherit;  
+      cursor: pointer;  
+    }  
+  
+    .grain {  
+      position: fixed;  
+      inset: 0;  
+      z-index: 20;  
+      pointer-events: none;  
+      opacity: 0.06;  
+      background-image: url("https://grainy-gradients.vercel.app/noise.svg");  
+      mix-blend-mode: screen;  
+    }  
+  
+    .cursor-glow {  
+      position: fixed;  
+      width: 320px;  
+      height: 320px;  
+      border-radius: 50%;  
+      background: radial-gradient(  
+        circle,  
+        rgba(200, 173, 120, 0.08),  
+        transparent 65%  
+      );  
+      pointer-events: none;  
+      transform: translate(-50%, -50%);  
+      z-index: 1;  
+    }  
+  
+    header {  
+      position: absolute;  
+      top: 0;  
+      left: 0;  
+      width: 100%;  
+      z-index: 10;  
+      display: flex;  
+      align-items: center;  
+      justify-content: space-between;  
+      padding: 30px 5vw;  
+    }  
+  
+    .logo {  
+      font-family: "Playfair Display", serif;  
+      font-size: 27px;  
+      letter-spacing: 7px;  
+      color: var(--white);  
+    }  
+  
+    .header-right {  
+      display: flex;  
+      align-items: center;  
+      gap: 30px;  
+    }  
+  
+    .header-link {  
+      font-size: 10px;  
+      letter-spacing: 3px;  
+      text-transform: uppercase;  
+      color: var(--muted);  
+      transition: color 0.3s ease;  
+    }  
+  
+    .header-link:hover {  
+      color: var(--light-gold);  
+    }  
+  
+    .menu-button {  
+      border: 1px solid var(--line);  
+      background: transparent;  
+      color: var(--white);  
+      padding: 12px 18px;  
+      font-size: 10px;  
+      letter-spacing: 3px;  
+      text-transform: uppercase;  
+      transition: all 0.3s ease;  
+    }  
+  
+    .menu-button:hover {  
+      background: var(--gold);  
+      color: var(--black);  
+    }  
+  
+    .hero {  
+      position: relative;  
+      min-height: 100vh;  
+      display: flex;  
+      align-items: center;  
+      overflow: hidden;  
+      background:  
+        linear-gradient(  
+          90deg,  
+          rgba(5, 5, 4, 0.98) 0%,  
+          rgba(5, 5, 4, 0.82) 38%,  
+          rgba(5, 5, 4, 0.35) 75%,  
+          rgba(5, 5, 4, 0.7) 100%  
+        ),  
+        url("https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=2200&q=90")  
+        center / cover;  
+    }  
+  
+    .hero::after {  
+      content: "";  
+      position: absolute;  
+      inset: 0;  
+      background: linear-gradient(  
+        0deg,  
+        var(--black) 0%,  
+        transparent 25%,  
+        transparent 75%,  
+        rgba(0,0,0,0.35) 100%  
+      );  
+      pointer-events: none;  
+    }  
+  
+    .hero-content {  
+      position: relative;  
+      z-index: 2;  
+      width: 90%;  
+      max-width: 1400px;  
+      margin: 0 auto;  
+      padding-top: 70px;  
+    }  
+  
+    .eyebrow {  
+      display: flex;  
+      align-items: center;  
+      gap: 15px;  
+      color: var(--light-gold);  
+      font-size: 10px;  
+      letter-spacing: 4px;  
+      text-transform: uppercase;  
+      margin-bottom: 30px;  
+      animation: fadeUp 1s ease both;  
+    }  
+  
+    .eyebrow::before {  
+      content: "";  
+      width: 42px;  
+      height: 1px;  
+      background: var(--gold);  
+    }  
+  
+    h1 {  
+      font-family: "Playfair Display", serif;  
+      font-weight: 400;  
+      font-size: clamp(72px, 11vw, 175px);  
+      line-height: 0.84;  
+      letter-spacing: -7px;  
+      max-width: 850px;  
+      animation: fadeUp 1s 0.15s ease both;  
+    }  
+  
+    h1 em {  
+      display: block;  
+      color: var(--light-gold);  
+      font-weight: 400;  
+      margin-left: 13vw;  
+    }  
+  
+    .hero-description {  
+      max-width: 390px;  
+      color: #bdb7ad;  
+      font-size: 14px;  
+      line-height: 1.9;  
+      margin-top: 45px;  
+      animation: fadeUp 1s 0.3s ease both;  
+    }  
+  
+    .hero-actions {  
+      display: flex;  
+      align-items: center;  
+      gap: 30px;  
+      margin-top: 42px;  
+      animation: fadeUp 1s 0.45s ease both;  
+    }  
+  
+    .gold-button {  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 25px;  
+      background: var(--gold);  
+      color: var(--black);  
+      border: none;  
+      padding: 17px 24px;  
+      font-size: 10px;  
+      letter-spacing: 3px;  
+      text-transform: uppercase;  
+      transition: all 0.4s ease;  
+    }  
+  
+    .gold-button span {  
+      font-size: 18px;  
+      line-height: 0;  
+      transition: transform 0.4s ease;  
+    }  
+  
+    .gold-button:hover {  
+      background: var(--light-gold);  
+      padding-right: 30px;  
+    }  
+  
+    .gold-button:hover span {  
+      transform: translateX(5px);  
+    }  
+  
+    .text-button {  
+      color: var(--muted);  
+      font-size: 10px;  
+      letter-spacing: 3px;  
+      text-transform: uppercase;  
+      border-bottom: 1px solid var(--line);  
+      padding-bottom: 8px;  
+      transition: color 0.3s ease;  
+    }  
+  
+    .text-button:hover {  
+      color: var(--light-gold);  
+    }  
+  
+    .hero-side-text {  
+      position: absolute;  
+      right: 5vw;  
+      bottom: 55px;  
+      writing-mode: vertical-rl;  
+      transform: rotate(180deg);  
+      color: #817b71;  
+      font-size: 9px;  
+      letter-spacing: 4px;  
+      text-transform: uppercase;  
+      z-index: 2;  
+    }  
+  
+    .scroll-indicator {  
+      position: absolute;  
+      bottom: 42px;  
+      left: 5vw;  
+      z-index: 2;  
+      display: flex;  
+      align-items: center;  
+      gap: 14px;  
+      color: #817b71;  
+      font-size: 9px;  
+      letter-spacing: 3px;  
+      text-transform: uppercase;  
+    }  
+  
+    .scroll-line {  
+      width: 45px;  
+      height: 1px;  
+      background: var(--gold);  
+    }  
+  
+    .intro {  
+      padding: 160px 5vw;  
+      background: var(--black);  
+      display: grid;  
+      grid-template-columns: 1fr 1fr;  
+      gap: 12vw;  
+      align-items: start;  
+    }  
+  
+    .section-label {  
+      color: var(--gold);  
+      font-size: 10px;  
+      letter-spacing: 4px;  
+      text-transform: uppercase;  
+      margin-bottom: 30px;  
+    }  
+  
+    .intro h2 {  
+      font-family: "Playfair Display", serif;  
+      font-size: clamp(38px, 5vw, 70px);  
+      line-height: 1.05;  
+      font-weight: 400;  
+      max-width: 500px;  
+    }  
+  
+    .intro h2 em {  
+      color: var(--gold);  
+    }  
+  
+    .intro-text {  
+      padding-top: 55px;  
+      color: var(--muted);  
+      font-size: 15px;  
+      line-height: 2;  
+      max-width: 430px;  
+    }  
+  
+    .intro-text strong {  
+      display: block;  
+      color: var(--white);  
+      font-family: "Playfair Display", serif;  
+      font-size: 26px;  
+      font-weight: 400;  
+      margin-bottom: 25px;  
+    }  
+  
+    .discovery {  
+      position: relative;  
+      padding: 150px 5vw;  
+      background:  
+        linear-gradient(  
+          90deg,  
+          rgba(10,10,9,0.98),  
+          rgba(10,10,9,0.84)  
+        ),  
+        url("https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=2200&q=85")  
+        center / cover fixed;  
+    }  
+  
+    .discovery-inner {  
+      max-width: 1400px;  
+      margin: 0 auto;  
+    }  
+  
+    .discovery-top {  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: end;  
+      gap: 30px;  
+      margin-bottom: 70px;  
+    }  
+  
+    .discovery h2 {  
+      font-family: "Playfair Display", serif;  
+      font-weight: 400;  
+      font-size: clamp(42px, 6vw, 85px);  
+      line-height: 0.95;  
+      max-width: 650px;  
+    }  
+  
+    .discovery h2 em {  
+      color: var(--gold);  
+    }  
+  
+    .discovery-intro {  
+      color: var(--muted);  
+      font-size: 13px;  
+      line-height: 1.8;  
+      max-width: 260px;  
+    }  
+  
+    .quiz-box {  
+      border: 1px solid var(--line);  
+      background: rgba(10, 10, 9, 0.75);  
+      backdrop-filter: blur(12px);  
+      padding: 45px;  
+      max-width: 850px;  
+    }  
+  
+    .quiz-progress {  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: center;  
+      margin-bottom: 50px;  
+      color: var(--muted);  
+      font-size: 10px;  
+      letter-spacing: 3px;  
+      text-transform: uppercase;  
+    }  
+  
+    .progress-bar {  
+      height: 1px;  
+      background: #34332f;  
+      flex: 1;  
+      margin: 0 25px;  
+    }  
+  
+    .progress-fill {  
+      width: 20%;  
+      height: 100%;  
+      background: var(--gold);  
+      transition: width 0.4s ease;  
+    }  
+  
+    .question-number {  
+      color: var(--gold);  
+      font-size: 11px;  
+      letter-spacing: 3px;  
+      margin-bottom: 20px;  
+    }  
+  
+    .question-title {  
+      font-family: "Playfair Display", serif;  
+      font-size: clamp(30px, 4vw, 50px);  
+      font-weight: 400;  
+      line-height: 1.1;  
+      margin-bottom: 35px;  
+    }  
+  
+    .options {  
+      display: grid;  
+      grid-template-columns: repeat(2, 1fr);  
+      gap: 12px;  
+    }  
+  
+    .option {  
+      position: relative;  
+      border: 1px solid #38362f;  
+      background: transparent;  
+      color: #bdb7ad;  
+      text-align: left;  
+      padding: 22px;  
+      min-height: 90px;  
+      transition: all 0.3s ease;  
+    }  
+  
+    .option small {  
+      display: block;  
+      color: #6e695f;  
+      font-size: 9px;  
+      letter-spacing: 2px;  
+      text-transform: uppercase;  
+      margin-bottom: 10px;  
+    }  
+  
+    .option strong {  
+      font-family: "Playfair Display", serif;  
+      font-size: 21px;  
+      font-weight: 400;  
+      color: var(--white);  
+    }  
+  
+    .option:hover,  
+    .option.selected {  
+      border-color: var(--gold);  
+      background: rgba(200, 173, 120, 0.08);  
+    }  
+  
+    .option.selected::after {  
+      content: "✓";  
+      position: absolute;  
+      right: 15px;  
+      top: 15px;  
+      color: var(--gold);  
+    }  
+  
+    .quiz-bottom {  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: center;  
+      margin-top: 45px;  
+    }  
+  
+    .quiz-count {  
+      color: #6e695f;  
+      font-size: 10px;  
+      letter-spacing: 2px;  
+    }  
+  
+    .quiz-next {  
+      border: 1px solid var(--gold);  
+      background: transparent;  
+      color: var(--light-gold);  
+      padding: 15px 25px;  
+      font-size: 10px;  
+      letter-spacing: 3px;  
+      text-transform: uppercase;  
+      transition: all 0.3s ease;  
+    }  
+  
+    .quiz-next:hover {  
+      background: var(--gold);  
+      color: var(--black);  
+    }  
+  
+    .collection {  
+      padding: 150px 5vw;  
+      background: #11110f;  
+    }  
+  
+    .collection-header {  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: end;  
+      margin-bottom: 70px;  
+    }  
+  
+    .collection-header h2 {  
+      font-family: "Playfair Display", serif;  
+      font-size: clamp(45px, 6vw, 85px);  
+      font-weight: 400;  
+      line-height: 0.95;  
+    }  
+  
+    .collection-header p {  
+      color: var(--muted);  
+      font-size: 13px;  
+      line-height: 1.8;  
+      max-width: 280px;  
+    }  
+  
+    .products {  
+      display: grid;  
+      grid-template-columns: repeat(3, 1fr);  
+      gap: 25px;  
+      max-width: 1400px;  
+      margin: 0 auto;  
+    }  
+  
+    .product {  
+      position: relative;  
+      min-height: 560px;  
+      overflow: hidden;  
+      background: #1b1a17;  
+    }  
+  
+    .product-image {  
+      position: absolute;  
+      inset: 0;  
+      background-size: cover;  
+      background-position: center;  
+      transition: transform 0.8s ease;  
+    }  
+  
+    .product:nth-child(1) .product-image {  
+      background-image:  
+        linear-gradient(0deg, rgba(0,0,0,0.75), transparent 60%),  
+        url("https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1000&q=85");  
+    }  
+  
+    .product:nth-child(2) .product-image {  
+      background-image:  
+        linear-gradient(0deg, rgba(0,0,0,0.75), transparent 60%),  
+        url("https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=1000&q=85");  
+    }  
+  
+    .product:nth-child(3) .product-image {  
+      background-image:  
+        linear-gradient(0deg, rgba(0,0,0,0.75), transparent 60%),  
+        url("https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1000&q=85");  
+    }  
+  
+    .product:hover .product-image {  
+      transform: scale(1.06);  
+    }  
+  
+    .product-info {  
+      position: absolute;  
+      inset: auto 30px 30px;  
+      z-index: 2;  
+    }  
+  
+    .product-index {  
+      color: var(--gold);  
+      font-size: 10px;  
+      letter-spacing: 3px;  
+      margin-bottom: 14px;  
+    }  
+  
+    .product-name {  
+      font-family: "Playfair Display", serif;  
+      font-size: 42px;  
+      font-weight: 400;  
+      margin-bottom: 8px;  
+    }  
+  
+    .product-type {  
+      color: #b0a99e;  
+      font-size: 9px;  
+      letter-spacing: 3px;  
+      text-transform: uppercase;  
+    }  
+  
+    .product-price {  
+      position: absolute;  
+      top: 30px;  
+      right: 30px;  
+      color: var(--white);  
+      font-size: 13px;  
+    }  
+  
+    .brand {  
+      padding: 170px 5vw;  
+      text-align: center;  
+      background: var(--black);  
+    }  
+  
+    .brand h2 {  
+      font-family: "Playfair Display", serif;  
+      font-size: clamp(50px, 8vw, 125px);  
+      line-height: 0.95;  
+      font-weight: 400;  
+      letter-spacing: -3px;  
+    }  
+  
+    .brand h2 em {  
+      color: var(--gold);  
+    }  
+  
+    .brand p {  
+      max-width: 470px;  
+      margin: 40px auto 0;  
+      color: var(--muted);  
+      line-height: 2;  
+      font-size: 14px;  
+    }  
+  
+    .brand-symbol {  
+      margin: 55px auto 0;  
+      width: 70px;  
+      height: 70px;  
+      border: 1px solid var(--gold);  
+      border-radius: 50%;  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      color: var(--gold);  
+      font-family: "Playfair Display", serif;  
+      font-size: 25px;  
+    }  
+  
+    footer {  
+      border-top: 1px solid #292823;  
+      padding: 45px 5vw;  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: center;  
+      gap: 30px;  
+      background: #0d0d0c;  
+    }  
+  
+    .footer-logo {  
+      font-family: "Playfair Display", serif;  
+      font-size: 23px;  
+      letter-spacing: 5px;  
+    }  
+  
+    .footer-copy {  
+      color: #6e695f;  
+      font-size: 10px;  
+      letter-spacing: 2px;  
+      text-transform: uppercase;  
+    }  
+  
+    .footer-social {  
+      display: flex;  
+      gap: 25px;  
+      color: #8f897e;  
+      font-size: 10px;  
+      letter-spacing: 2px;  
+      text-transform: uppercase;  
+    }  
+  
+    .result {  
+      display: none;  
+      text-align: center;  
+      padding: 30px 0;  
+    }  
+  
+    .result.show {  
+      display: block;  
+    }  
+  
+    .result h3 {  
+      font-family: "Playfair Display", serif;  
+      font-size: 42px;  
+      font-weight: 400;  
+      margin-bottom: 20px;  
+    }  
+  
+    .result p {  
+      color: var(--muted);  
+      line-height: 1.8;  
+      margin-bottom: 30px;  
+    }  
+  
+    .whatsapp-button {  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 15px;  
+      background: #b9a16f;  
+      color: #0a0a09;  
+      padding: 17px 24px;  
+      border: none;  
+      font-size: 10px;  
+      letter-spacing: 2px;  
+      text-transform: uppercase;  
+    }  
+  
+    @keyframes fadeUp {  
+      from {  
+        opacity: 0;  
+        transform: translateY(25px);  
+      }  
+      to {  
+        opacity: 1;  
+        transform: translateY(0);  
+      }  
+    }  
+  
+    @media (max-width: 800px) {  
+      header {  
+        padding: 25px 22px;  
+      }  
+  
+      .logo {  
+        font-size: 22px;  
+        letter-spacing: 5px;  
+      }  
+  
+      .header-link {  
+        display: none;  
+      }  
+  
+      .hero {  
+        min-height: 100svh;  
+        background-position: 62% center;  
+      }  
+  
+      .hero-content {  
+        width: auto;  
+        margin: 0 22px;  
+        padding-top: 100px;  
+      }  
+  
+      h1 {  
+        font-size: clamp(66px, 20vw, 105px);  
+        letter-spacing: -4px;  
+      }  
+  
+      h1 em {  
+        margin-left: 12vw;  
+      }  
+  
+      .hero-description {  
+        font-size: 13px;  
+        max-width: 310px;  
+        margin-top: 35px;  
+      }  
+  
+      .hero-actions {  
+        align-items: flex-start;  
+        flex-direction: column;  
+        gap: 25px;  
+      }  
+  
+      .hero-side-text {  
+        display: none;  
+      }  
+  
+      .scroll-indicator {  
+        left: 22px;  
+        bottom: 25px;  
+      }  
+  
+      .intro {  
+        display: block;  
+        padding: 100px 22px;  
+      }  
+  
+      .intro-text {  
+        padding-top: 40px;  
+      }  
+  
+      .discovery {  
+        padding: 100px 22px;  
+        background-attachment: scroll;  
+      }  
+  
+      .discovery-top {  
+        display: block;  
+        margin-bottom: 45px;  
+      }  
+  
+      .discovery-intro {  
+        margin-top: 30px;  
+      }  
+  
+      .quiz-box {  
+        padding: 25px 20px;  
+      }  
+  
+      .quiz-progress {  
+        margin-bottom: 35px;  
+      }  
+  
+      .options {  
+        grid-template-columns: 1fr;  
+      }  
+  
+      .option {  
+        min-height: 75px;  
+        padding: 17px;  
+      }  
+  
+      .option strong {  
+        font-size: 19px;  
+      }  
+  
+      .quiz-bottom {  
+        margin-top: 30px;  
+      }  
+  
+      .collection {  
+        padding: 100px 22px;  
+      }  
+  
+      .collection-header {  
+        display: block;  
+        margin-bottom: 45px;  
+      }  
+  
+      .collection-header p {  
+        margin-top: 25px;  
+      }  
+  
+      .products {  
+        grid-template-columns: 1fr;  
+        gap: 18px;  
+      }  
+  
+      .product {  
+        min-height: 470px;  
+      }  
+  
+      .brand {  
+        padding: 110px 22px;  
+      }  
+  
+      footer {  
+        flex-direction: column;  
+        align-items: flex-start;  
+        padding: 35px 22px;  
+      }  
+    }  
+  </style>  </head>  <body>    <div class="grain"></div>  
+  <div class="cursor-glow" id="cursorGlow"></div>    <header>  
+    <a href="#" class="logo">ÉVRAUNE</a>  <div class="header-right">  
+  <a href="#collection" class="header-link">Collection</a>  
+  <a href="#discovery" class="header-link">Koku keşfet</a>  
+  <button class="menu-button" onclick="document.querySelector('#discovery').scrollIntoView({behavior:'smooth'})">  
+    Menü  
+  </button>  
+</div>
+
+  </header>    <main>  <section class="hero">  
+  <div class="hero-content">  
+    <div class="eyebrow">Modern parfumerie</div>  
+
+    <h1>  
+      Scent  
+      <em>is self.</em>  
+    </h1>  
+
+    <p class="hero-description">  
+      Koku; hafızayla, karakterle ve hislerle buluştuğu anda  
+      kişisel bir imzaya dönüşür. ÉVRAUNE, kendini ifade  
+      etmenin en özel yolunu keşfeder.  
+    </p>  
+
+    <div class="hero-actions">  
+      <a href="#discovery" class="gold-button">  
+        Koku keşfine başla  
+        <span>↗</span>  
+      </a>  
+
+      <a href="#collection" class="text-button">  
+        Koleksiyonu keşfet  
+      </a>  
+    </div>  
+  </div>  
+
+  <div class="scroll-indicator">  
+    <span class="scroll-line"></span>  
+    Scroll to explore  
+  </div>  
+
+  <div class="hero-side-text">  
+    ÉVRAUNE — Olfactory identity  
+  </div>  
+</section>  
+
+<section class="intro">  
+  <div>  
+    <div class="section-label">01 — Felsefe</div>  
+
+    <h2>  
+      Bir koku değil.  
+      <br>  
+      <em>Bir iz.</em>  
+    </h2>  
+  </div>  
+
+  <div class="intro-text">  
+    <strong>Koku, görünmeyen imzandır.</strong>  
+
+    ÉVRAUNE, parfümü yalnızca güzel kokmak olarak değil;  
+    karakteri, anıları ve duyguları ifade eden kişisel  
+    bir deneyim olarak ele alır.  
+
+    Her nota bir his, her dokunuş bir hikâye anlatır.  
+  </div>  
+</section>  
+
+<section class="discovery" id="discovery">  
+  <div class="discovery-inner">  
+
+    <div class="discovery-top">  
+      <div>  
+        <div class="section-label">02 — Koku keşfi</div>  
+
+        <h2>  
+          Sana ait  
+          <br>  
+          <em>kokuyu bul.</em>  
+        </h2>  
+      </div>  
+
+      <p class="discovery-intro">  
+        Birkaç soruyla koku zevkini keşfedelim.  
+        Seçimlerin, sana en uygun ÉVRAUNE  
+        deneyimini oluşturmamıza yardımcı olacak.  
+      </p>  
+    </div>  
+
+    <div class="quiz-box" id="quizBox">  
+
+      <div class="quiz-progress">  
+        <span id="progressText">01 / 05</span>  
+        <div class="progress-bar">  
+          <div class="progress-fill" id="progressFill"></div>  
+        </div>  
+        <span>Discovery</span>  
+      </div>  
+
+      <div id="quizContent">  
+        <div class="question-number" id="questionNumber">  
+          QUESTION 01  
+        </div>  
+
+        <h3 class="question-title" id="questionTitle">  
+          Nasıl bir koku karakteri seni yansıtır?  
+        </h3>  
+
+        <div class="options" id="options"></div>  
+
+        <div class="quiz-bottom">  
+          <span class="quiz-count" id="quizCount">  
+            Bir seçim yap  
+          </span>  
+
+          <button class="quiz-next" id="nextButton" onclick="nextQuestion()">  
+            Devam et ↗  
+          </button>  
+        </div>  
+      </div>  
+
+      <div class="result" id="result">  
+        <div class="section-label">Profilin hazır</div>  
+
+        <h3>Kokun seni anlatsın.</h3>  
+
+        <p>  
+          Seçimlerini ÉVRAUNE danışmanına gönder.  
+          Sana en uygun parfüm önerisini birlikte oluşturalım.  
+        </p>  
+
+        <button class="whatsapp-button" onclick="sendToWhatsApp()">  
+          WhatsApp’a gönder ↗  
+        </button>  
+      </div>  
+
+    </div>  
+  </div>  
+</section>  
+
+<section class="collection" id="collection">  
+  <div class="collection-header">  
+    <div>  
+      <div class="section-label">03 — Koleksiyon</div>  
+      <h2>  
+        The ÉVRAUNE  
+        <br>  
+        <em>collection.</em>  
+      </h2>  
+    </div>  
+
+    <p>  
+      Farklı karakterler, farklı anlar,  
+      tek bir kişisel imza.  
+    </p>  
+  </div>  
+
+  <div class="products">  
+
+    <article class="product">  
+      <div class="product-image"></div>  
+      <div class="product-price">600 TL</div>  
+      <div class="product-info">  
+        <div class="product-index">ÉVRAUNE / 01</div>  
+        <div class="product-name">Black</div>  
+        <div class="product-type">Woody · Intense · Bold</div>  
+      </div>  
+    </article>  
+
+    <article class="product">  
+      <div class="product-image"></div>  
+      <div class="product-price">600 TL</div>  
+      <div class="product-info">  
+        <div class="product-index">ÉVRAUNE / 02</div>  
+        <div class="product-name">Narcotic</div>  
+        <div class="product-type">Floral · Sensual · Deep</div>  
+      </div>  
+    </article>  
+
+    <article class="product">  
+      <div class="product-image"></div>  
+      <div class="product-price">600 TL</div>  
+      <div class="product-info">  
+        <div class="product-index">ÉVRAUNE / 03</div>  
+        <div class="product-name">Intensely</div>  
+        <div class="product-type">Amber · Warm · Magnetic</div>  
+      </div>  
+    </article>  
+
+  </div>  
+</section>  
+
+<section class="brand">  
+  <div class="section-label">04 — ÉVRAUNE</div>  
+
+  <h2>  
+    Your scent.  
+    <br>  
+    <em>Your signature.</em>  
+  </h2>  
+
+  <p>  
+    Her insanın kendine ait bir kokusu vardır.  
+    Bizim işimiz, o kokuyu birlikte keşfetmek.  
+  </p>  
+
+  <div class="brand-symbol">É</div>  
+</section>
+
+  </main>    <footer>  
+    <div class="footer-logo">ÉVRAUNE</div>  <div class="footer-copy">  
+  Modern parfumerie © 2026  
+</div>  
+
+<div class="footer-social">  
+  <a href="#discovery">Instagram</a>  
+  <a href="#discovery">WhatsApp</a>  
+</div>
+
+  </footer>    <script>  
+    const WHATSAPP_NUMBER = "905334898006";  
+  
+    const questions = [  
+      {  
+        title: "Nasıl bir koku karakteri seni yansıtır?",  
+        options: [  
+          {  
+            label: "Gizemli",  
+            desc: "Derin ve karanlık",  
+            value: "Gizemli ve karanlık"  
+          },  
+          {  
+            label: "Zarif",  
+            desc: "Temiz ve rafine",  
+            value: "Zarif ve rafine"  
+          },  
+          {  
+            label: "Cesur",  
+            desc: "Yoğun ve dikkat çekici",  
+            value: "Cesur ve yoğun"  
+          },  
+          {  
+            label: "Özgür",  
+            desc: "Taze ve enerjik",  
+            value: "Özgür ve enerjik"  
+          }  
+        ]  
+      },  
+      {  
+        title: "Parfümünü en çok ne zaman kullanacaksın?",  
+        options: [  
+          {  
+            label: "Gündüz",  
+            desc: "Günlük kullanım",  
+            value: "Gündüz"  
+          },  
+          {  
+            label: "Gece",  
+            desc: "Özel anlar",  
+            value: "Gece"  
+          },  
+          {  
+            label: "İş / Ofis",  
+            desc: "Profesyonel ortam",  
+            value: "İş ve ofis"  
+          },  
+          {  
+            label: "Her an",  
+            desc: "Günün her saati",  
+            value: "Her an"  
+          }  
+        ]  
+      },  
+      {  
+        title: "Hangi koku ailesi sana daha yakın?",  
+        options: [  
+          {  
+            label: "Odunsu",  
+            desc: "Sedir, sandal, vetiver",  
+            value: "Odunsu notalar"  
+          },  
+          {  
+            label: "Çiçeksi",  
+            desc: "Gül, yasemin, iris",  
+            value: "Çiçeksi notalar"  
+          },  
+          {  
+            label: "Amber",  
+            desc: "Vanilya, reçine, sıcaklık",  
+            value: "Amber ve sıcak notalar"  
+          },  
+          {  
+            label: "Taze",  
+            desc: "Narenciye, temiz, ferah",  
+            value: "Taze ve ferah notalar"  
+          }  
+        ]  
+      },  
+      {  
+        title: "Kokunun yoğunluğu nasıl olmalı?",  
+        options: [  
+          {  
+            label: "Hafif",  
+            desc: "Tenine yakın",  
+            value: "Hafif"  
+          },  
+          {  
+            label: "Dengeli",  
+            desc: "Fark edilir ama zarif",  
+            value: "Dengeli"  
+          },  
+          {  
+            label: "Yoğun",  
+            desc: "Belirgin ve kalıcı",  
+            value: "Yoğun"  
+          },  
+          {  
+            label: "Çok yoğun",  
+            desc: "Güçlü bir iz",  
+            value: "Çok yoğun"  
+          }  
+        ]  
+      },  
+      {  
+        title: "Kokun nasıl bir his bırakmalı?",  
+        options: [  
+          {  
+            label: "Güven",  
+            desc: "Güçlü ve kararlı",  
+            value: "Güven veren"  
+          },  
+          {  
+            label: "Çekicilik",  
+            desc: "Sıcak ve etkileyici",  
+            value: "Çekici ve etkileyici"  
+          },  
+          {  
+            label: "Huzur",  
+            desc: "Sakin ve temiz",  
+            value: "Huzurlu ve temiz"  
+          },  
+          {  
+            label: "Merak",  
+            desc: "Gizemli ve farklı",  
+            value: "Merak uyandıran"  
+          }  
+        ]  
+      }  
+    ];  
+  
+    let currentQuestion = 0;  
+    let answers = [];  
+  
+    const optionsElement = document.getElementById("options");  
+    const questionTitle = document.getElementById("questionTitle");  
+    const questionNumber = document.getElementById("questionNumber");  
+    const progressText = document.getElementById("progressText");  
+    const progressFill = document.getElementById("progressFill");  
+    const quizCount = document.getElementById("quizCount");  
+    const nextButton = document.getElementById("nextButton");  
+    const quizContent = document.getElementById("quizContent");  
+    const result = document.getElementById("result");  
+  
+    function renderQuestion() {  
+      const question = questions[currentQuestion];  
+  
+      questionTitle.textContent = question.title;  
+      questionNumber.textContent =  
+        "QUESTION " + String(currentQuestion + 1).padStart(2, "0");  
+  
+      progressText.textContent =  
+        String(currentQuestion + 1).padStart(2, "0") + " / 05";  
+  
+      progressFill.style.width =  
+        ((currentQuestion + 1) / questions.length) * 100 + "%";  
+  
+      optionsElement.innerHTML = "";  
+  
+      question.options.forEach((option, index) => {  
+        const button = document.createElement("button");  
+        button.className = "option";  
+  
+        button.innerHTML = `  
+          <small>0${index + 1}</small>  
+          <strong>${option.label}</strong>  
+          <div style="color:#777166;font-size:11px;margin-top:7px;">  
+            ${option.desc}  
+          </div>  
+        `;  
+  
+        button.onclick = () => {  
+          document.querySelectorAll(".option").forEach(item => {  
+            item.classList.remove("selected");  
+          });  
+  
+          button.classList.add("selected");  
+          answers[currentQuestion] = option.value;  
+          quizCount.textContent = "Seçildi: " + option.label;  
+          nextButton.style.opacity = "1";  
+        };  
+  
+        optionsElement.appendChild(button);  
+      });  
+  
+      if (answers[currentQuestion]) {  
+        quizCount.textContent = "Seçimin kaydedildi";  
+      } else {  
+        quizCount.textContent = "Bir seçim yap";  
+      }  
+  
+      nextButton.textContent =  
+        currentQuestion === questions.length - 1  
+          ? "Profilimi oluştur ↗"  
+          : "Devam et ↗";  
+    }  
+  
+    function nextQuestion() {  
+      if (!answers[currentQuestion]) {  
+        quizCount.textContent = "Devam etmek için bir seçim yap";  
+        quizCount.style.color = "#c8ad78";  
+        return;  
+      }  
+  
+      if (currentQuestion < questions.length - 1) {  
+        currentQuestion++;  
+        renderQuestion();  
+      } else {  
+        quizContent.style.display = "none";  
+        result.classList.add("show");  
+      }  
+    }  
+  
+    function sendToWhatsApp() {  
+      const message = `  
+Merhaba ÉVRAUNE,  
+  
+Koku keşfi sonucumu paylaşmak istiyorum.  
+  
+Koku karakterim: ${answers[0]}  
+Kullanım zamanı: ${answers[1]}  
+Sevdiğim koku ailesi: ${answers[2]}  
+Yoğunluk tercihim: ${answers[3]}  
+Bırakmasını istediğim his: ${answers[4]}  
+  
+Bana uygun parfüm önerinizi öğrenmek istiyorum.  
+      `.trim();  
+  
+      const url =  
+        "https://wa.me/" +  
+        WHATSAPP_NUMBER +  
+        "?text=" +  
+        encodeURIComponent(message);  
+  
+      window.open(url, "_blank");  
+    }  
+  
+    const cursorGlow = document.getElementById("cursorGlow");  
+  
+    document.addEventListener("mousemove", (event) => {  
+      cursorGlow.style.left = event.clientX + "px";  
+      cursorGlow.style.top = event.clientY + "px";  
+    });  
+  
+    renderQuestion();  
+  </script>  <!-- ÉVRAUNE AMBIENT MUSIC -->  <audio id="ambientMusic" loop preload="auto">  
+  <source src="fassounds-escape-your-love-upbeat-fashion-pop-dance-412230.mp3" type="audio/mpeg">  
+</audio>  <button id="musicToggle" class="music-toggle" aria-label="Müziği aç veya kapat">  
+  <span class="music-icon">♫</span>  
+  <span id="musicLabel">MUSIC OFF</span>  
+</button>  <style>  
+  .music-toggle {  
+    position: fixed;  
+    right: 22px;  
+    bottom: 22px;  
+    z-index: 9999;  
+    display: flex;  
+    align-items: center;  
+    gap: 10px;  
+    border: 1px solid rgba(200, 173, 120, 0.55);  
+    background: rgba(10, 10, 9, 0.88);  
+    backdrop-filter: blur(12px);  
+    color: #c8ad78;  
+    padding: 12px 16px;  
+    font-family: "DM Sans", Arial, sans-serif;  
+    font-size: 9px;  
+    letter-spacing: 2px;  
+    cursor: pointer;  
+    transition: all 0.3s ease;  
+  }  
+  
+  .music-toggle:hover {  
+    background: #c8ad78;  
+    color: #0a0a09;  
+  }  
+  
+  .music-icon {  
+    font-size: 16px;  
+    line-height: 1;  
+  }  
+  
+  .music-toggle.playing {  
+    border-color: #c8ad78;  
+    box-shadow: 0 0 18px rgba(200, 173, 120, 0.18);  
+  }  
+  
+  .music-toggle.playing .music-icon {  
+    animation: musicPulse 1.2s ease-in-out infinite;  
+  }  
+  
+  @keyframes musicPulse {  
+    0%, 100% {  
+      transform: scale(1);  
+    }  
+    50% {  
+      transform: scale(1.2);  
+    }  
+  }  
+  
+  @media (max-width: 600px) {  
+    .music-toggle {  
+      right: 15px;  
+      bottom: 15px;  
+      padding: 11px 13px;  
+      font-size: 8px;  
+    }  
+  }  
+</style>  <script>  
+  const ambientMusic = document.getElementById("ambientMusic");  
+  const musicToggle = document.getElementById("musicToggle");  
+  const musicLabel = document.getElementById("musicLabel");  
+  
+  let musicPlaying = false;  
+  
+  musicToggle.addEventListener("click", async function () {  
+    if (musicPlaying) {  
+      ambientMusic.pause();  
+      musicPlaying = false;  
+  
+      musicLabel.textContent = "MUSIC OFF";  
+      musicToggle.classList.remove("playing");  
+    } else {  
+      try {  
+        await ambientMusic.play();  
+  
+        musicPlaying = true;  
+        musicLabel.textContent = "MUSIC ON";  
+        musicToggle.classList.add("playing");  
+      } catch (error) {  
+        musicLabel.textContent = "TAP TO PLAY";  
+        console.log("Müzik başlatılamadı:", error);  
+      }  
+    }  
+  });  
+</script>  </body>  
 </html>
